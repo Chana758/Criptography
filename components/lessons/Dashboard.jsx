@@ -16,7 +16,7 @@ export default function Dashboard() {
             </div>
             <div className="text-center">
               <p className="font-black text-slate-900 uppercase tracking-widest text-[10px] mb-1">Created by</p>
-              <p className="font-medium">Mr. UNG Sereysopea</p>
+              <p className="font-medium">Mr. Sam Channa</p>
             </div>
           </div>
         </div>
