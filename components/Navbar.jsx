@@ -28,12 +28,12 @@ export default function Navbar({ currentPage, onPageChange }) {
           {/* LEFT SECTION */}
           <div className="flex items-center gap-4">
             
-            <div className="flex items-center gap-3 pr-4 border-r border-slate-200">
+            <div className="flex items-center gap-3 pr-4 ">
               
               {/* Logo 1 */}
-              <div className="relative w-10 h-10 sm:w-12 sm:h-12 bg-slate-900 rounded-xl flex items-center justify-center text-white shadow-lg overflow-hidden group cursor-pointer border border-slate-800">
+              <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-md flex items-center justify-center text-white overflow-hidden group cursor-pointer">
                 <img
-                  src="/image/rupp.jpg"
+                  src="/image/r1.png"
                   alt="Logo 1"
                   className="w-full h-full object-cover"
                   onError={handleImageError}
@@ -42,9 +42,9 @@ export default function Navbar({ currentPage, onPageChange }) {
               </div>
 
               {/* Logo 2 */}
-              <div className="relative w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg overflow-hidden group cursor-pointer border border-blue-500">
+              <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-md flex items-center justify-center text-white overflow-hidden group cursor-pointer ">
                 <img
-                  src="/image/rupp1.png"
+                  src="/image/r3.png"
                   alt="Logo 2"
                   className="w-full h-full object-cover"
                   onError={handleImageError}
