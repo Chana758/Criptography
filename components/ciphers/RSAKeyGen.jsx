@@ -57,15 +57,19 @@ export default function RSAKeyGen() {
   ];
 
   return (
-    <main className="flex-1 bg-slate-50 p-8">
-      <div className="max-w-3xl">
-        <h1 className="text-4xl font-bold text-slate-900 mb-2 font-serif">RSA Key Generation</h1>
-        <p className="text-slate-600 mb-8">
+    <main className="flex-1 bg-slate-50 px-4 py-6 sm:px-6 md:px-8">
+      <div className="max-w-4xl mx-auto">
+
+        {/* Header */}
+        <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2 font-serif">
+          RSA Key Generation
+        </h1>
+        <p className="text-slate-600 mb-8 text-sm sm:text-base">
           Generate RSA public and private key pairs from prime numbers.
         </p>
 
         {/* Formula Box */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6 border-l-4 border-blue-500">
+        <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 mb-6 border-l-4 border-blue-500">
           <h2 className="text-lg font-bold text-slate-900 mb-3">Steps</h2>
           <ol className="text-sm text-slate-600 space-y-2">
             <li>1. Choose two large prime numbers p and q</li>
@@ -78,8 +82,10 @@ export default function RSAKeyGen() {
         </div>
 
         {/* Input Section */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <div className="grid grid-cols-3 gap-4 mb-6">
+        <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 mb-6">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+
             <div>
               <label className="block text-sm font-semibold text-slate-900 mb-2">
                 Prime p
@@ -88,9 +94,10 @@ export default function RSAKeyGen() {
                 type="number"
                 value={p}
                 onChange={(e) => setP(e.target.value)}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               />
             </div>
+
             <div>
               <label className="block text-sm font-semibold text-slate-900 mb-2">
                 Prime q
@@ -99,9 +106,10 @@ export default function RSAKeyGen() {
                 type="number"
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               />
             </div>
+
             <div>
               <label className="block text-sm font-semibold text-slate-900 mb-2">
                 Public e
@@ -110,9 +118,10 @@ export default function RSAKeyGen() {
                 type="number"
                 value={e}
                 onChange={(e) => setE(e.target.value)}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               />
             </div>
+
           </div>
 
           <button
@@ -123,7 +132,7 @@ export default function RSAKeyGen() {
           </button>
 
           {error && (
-            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm">
+            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm break-words">
               Error: {error}
             </div>
           )}
@@ -131,7 +140,8 @@ export default function RSAKeyGen() {
           {/* Quick Select */}
           <div className="mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
             <p className="text-sm font-semibold text-slate-900 mb-3">Quick Selection:</p>
-            <div className="grid grid-cols-3 gap-2">
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
               {commonPrimes.map((pair, idx) => (
                 <button
                   key={idx}
@@ -145,6 +155,7 @@ export default function RSAKeyGen() {
                 </button>
               ))}
             </div>
+
           </div>
         </div>
 
@@ -152,37 +163,46 @@ export default function RSAKeyGen() {
         {details && (
           <>
             {/* Calculation Details */}
-            <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-              <h2 className="text-lg font-bold text-slate-900 mb-4">Calculation Details</h2>
+            <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 mb-6">
+              <h2 className="text-lg font-bold text-slate-900 mb-4">
+                Calculation Details
+              </h2>
+
               <div className="space-y-3 text-sm font-mono">
                 <div className="bg-slate-50 p-3 rounded">
                   <p className="text-slate-600">n = p × q</p>
-                  <p className="font-bold text-slate-900">n = {details.n}</p>
+                  <p className="font-bold text-slate-900 break-all">n = {details.n}</p>
                 </div>
+
                 <div className="bg-slate-50 p-3 rounded">
                   <p className="text-slate-600">φ(n) = (p-1) × (q-1)</p>
-                  <p className="font-bold text-slate-900">φ(n) = {details.phi}</p>
+                  <p className="font-bold text-slate-900 break-all">φ(n) = {details.phi}</p>
                 </div>
+
                 <div className="bg-slate-50 p-3 rounded">
                   <p className="text-slate-600">e (public exponent)</p>
                   <p className="font-bold text-slate-900">e = {details.e}</p>
                 </div>
+
                 <div className="bg-slate-50 p-3 rounded">
-                  <p className="text-slate-600">d = e⁻¹ mod φ(n) (private exponent)</p>
-                  <p className="font-bold text-slate-900">d = {details.d}</p>
+                  <p className="text-slate-600">d = e⁻¹ mod φ(n)</p>
+                  <p className="font-bold text-slate-900 break-all">d = {details.d}</p>
                 </div>
               </div>
             </div>
 
             {/* Key Display */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-white rounded-lg shadow-sm p-6 border-t-4 border-green-500">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+              <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 border-t-4 border-green-500">
                 <h3 className="text-lg font-bold text-slate-900 mb-4">Public Key</h3>
+
                 <div className="bg-green-50 p-4 rounded border border-green-200">
                   <p className="text-xs text-slate-600 mb-1">e:</p>
                   <p className="font-mono font-bold text-green-900 mb-3 break-all">
                     {publicKey?.e.toString()}
                   </p>
+
                   <p className="text-xs text-slate-600 mb-1">n:</p>
                   <p className="font-mono font-bold text-green-900 break-all">
                     {publicKey?.n.toString()}
@@ -190,22 +210,26 @@ export default function RSAKeyGen() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-6 border-t-4 border-red-500">
+              <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 border-t-4 border-red-500">
                 <h3 className="text-lg font-bold text-slate-900 mb-4">Private Key</h3>
+
                 <div className="bg-red-50 p-4 rounded border border-red-200">
                   <p className="text-xs text-slate-600 mb-1">d:</p>
                   <p className="font-mono font-bold text-red-900 mb-3 break-all">
                     {privateKey?.d.toString()}
                   </p>
+
                   <p className="text-xs text-slate-600 mb-1">n:</p>
                   <p className="font-mono font-bold text-red-900 break-all">
                     {privateKey?.n.toString()}
                   </p>
                 </div>
               </div>
+
             </div>
           </>
         )}
+
       </div>
     </main>
   );

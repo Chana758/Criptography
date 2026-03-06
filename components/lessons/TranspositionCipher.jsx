@@ -101,7 +101,7 @@ export default function App() {
         </div>
 
         {/* Video Section - Full Width of container */}
-        <div className="overflow-hidden rounded-[3rem] bg-slate-100">
+        <div className="overflow-hidden rounded-[1rem] bg-slate-100">
           <div className="aspect-video bg-slate-900 relative">
              <iframe
               src="https://www.youtube.com/embed/bcyUJK1BvHw"

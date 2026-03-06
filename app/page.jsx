@@ -48,7 +48,7 @@ export default function Home() {
         )}
         {renderMainContent()}
       </div>
-      <StickyNote currentPage={currentPage} currentLesson={currentLesson} />
+      {/* <StickyNote currentPage={currentPage} currentLesson={currentLesson} /> */}
     </div>
   );
 }

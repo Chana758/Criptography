@@ -25,7 +25,6 @@ export default function RSADecrypt() {
       const M = modPow(ciphertextBig, dBig, nBig);
       setMessage(M.toString());
 
-      // Store calculation steps
       setSteps({
         C: ciphertext,
         d,
@@ -55,35 +54,34 @@ export default function RSADecrypt() {
   ];
 
   return (
-    <main className="flex-1 bg-slate-50 p-8">
-      <div className="max-w-2xl">
-        <div className="flex items-start gap-3 mb-8">
-          <Unlock className="w-8 h-8 text-red-600 mt-1" />
+    <main className="flex-1 bg-slate-50 p-4 md:p-8">
+      <div className="max-w-2xl mx-auto">
+
+        <div className="flex items-start gap-3 mb-6 md:mb-8">
+          <Unlock className="w-7 h-7 md:w-8 md:h-8 text-red-600 mt-1" />
           <div>
-            <h1 className="text-4xl font-bold text-slate-900 font-serif">RSA Decryption</h1>
-            <p className="text-slate-600 mt-1">
+            <h1 className="text-2xl md:text-4xl font-bold text-slate-900 font-serif">
+              RSA Decryption
+            </h1>
+            <p className="text-sm md:text-base text-slate-600 mt-1">
               Decrypt messages using RSA private key
             </p>
           </div>
         </div>
 
-        {/* Formula Box */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6 border-l-4 border-red-500">
+        {/* Formula */}
+        <div className="bg-white rounded-lg shadow-sm p-4 md:p-6 mb-6 border-l-4 border-red-500">
           <h2 className="text-lg font-bold text-slate-900 mb-3">Formula</h2>
-          <p className="text-slate-700 font-mono text-center bg-slate-50 p-4 rounded mb-3">
+          <p className="text-slate-700 font-mono text-center bg-slate-50 p-3 md:p-4 rounded mb-3">
             M = C^d mod n
           </p>
-          <ul className="text-sm text-slate-600 space-y-1">
-            <li>• C = ciphertext (encrypted message)</li>
-            <li>• d = private exponent (secret!)</li>
-            <li>• n = modulus</li>
-            <li>• M = plaintext message</li>
-          </ul>
         </div>
 
-        {/* Input Section */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <div className="grid grid-cols-2 gap-4 mb-4">
+        {/* Input */}
+        <div className="bg-white rounded-lg shadow-sm p-4 md:p-6 mb-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+
             <div>
               <label className="block text-sm font-semibold text-slate-900 mb-2">
                 Ciphertext (C)
@@ -92,11 +90,10 @@ export default function RSADecrypt() {
                 type="number"
                 value={ciphertext}
                 onChange={(e) => setCiphertext(e.target.value)}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                placeholder="Encrypted message"
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500"
               />
-              <p className="text-xs text-slate-500 mt-1">Must be {'<'} n</p>
             </div>
+
             <div>
               <label className="block text-sm font-semibold text-slate-900 mb-2">
                 Private Exponent (d)
@@ -105,9 +102,10 @@ export default function RSADecrypt() {
                 type="number"
                 value={d}
                 onChange={(e) => setD(e.target.value)}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500"
               />
             </div>
+
           </div>
 
           <div className="mb-6">
@@ -118,25 +116,25 @@ export default function RSADecrypt() {
               type="number"
               value={n}
               onChange={(e) => setN(e.target.value)}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500"
             />
           </div>
 
           <button
             onClick={handleDecrypt}
-            className="w-full px-6 py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors mb-4"
+            className="w-full px-6 py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600"
           >
             Decrypt
           </button>
 
           {error && (
-            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm">
-              Error: {error}
+            <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm">
+              {error}
             </div>
           )}
 
           {message && (
-            <div>
+            <div className="mt-4">
               <label className="block text-sm font-semibold text-slate-900 mb-2">
                 Plaintext (M)
               </label>
@@ -147,21 +145,20 @@ export default function RSADecrypt() {
           )}
         </div>
 
-        {/* Calculation Steps */}
+        {/* Steps */}
         {steps && (
-          <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">Calculation</h2>
-            <div className="bg-slate-50 p-4 rounded border border-slate-200">
-              <p className="font-mono text-sm text-slate-900">
-                {steps.formula}
-              </p>
+          <div className="bg-white rounded-lg shadow-sm p-4 md:p-6 mb-6">
+            <h2 className="text-lg font-bold mb-3">Calculation</h2>
+            <div className="bg-slate-50 p-3 rounded">
+              <p className="font-mono text-sm">{steps.formula}</p>
             </div>
           </div>
         )}
 
         {/* Examples */}
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h2 className="text-lg font-bold text-slate-900 mb-4">Try These Examples</h2>
+        <div className="bg-white rounded-lg shadow-sm p-4 md:p-6">
+          <h2 className="text-lg font-bold mb-4">Examples</h2>
+
           <div className="space-y-2">
             {exampleKeys.map((example, idx) => (
               <button
@@ -172,20 +169,14 @@ export default function RSADecrypt() {
                   setCiphertext(example.cipher);
                   setMessage('');
                 }}
-                className="w-full px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-lg text-left text-sm font-semibold transition-colors"
+                className="w-full px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-left text-sm font-semibold"
               >
-                {example.name} (d={example.d}, n={example.n})
+                {example.name}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Info */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
-          <p className="text-sm text-blue-900">
-            <strong>Note:</strong> The private exponent (d) must be kept secret. Only the message owner should have access to it.
-          </p>
-        </div>
       </div>
     </main>
   );
